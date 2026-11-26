@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build-outputs/dev/flasher_args.json'
+elf = 'build-outputs/dev/bojaqu-door-lock.elf'

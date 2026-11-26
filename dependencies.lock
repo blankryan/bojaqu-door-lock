@@ -1,0 +1,26 @@
+dependencies:
+  bjq_mfrc522:
+    component_hash: dd0d288dceb45f8e49d67cc1cfcca96f16c94f699a2de3ed2754cff0c572ac28
+    dependencies:
+    - name: idf
+      version: '>=6.1.0,<7.0.0'
+    source:
+      git: https://github.com/blankryan/bjq-esp-component.git
+      path: drivers/bjq_mfrc522
+      type: git
+    targets:
+    - esp32
+    - esp32s3
+    - esp32c3
+    - esp32c6
+    version: 7349ab17ca2851caa529d7221b8182e6fec85f22
+  idf:
+    source:
+      type: idf
+    version: 6.1.0
+direct_dependencies:
+- bjq_mfrc522
+- idf
+manifest_hash: acfa4dffc75f0c8dc816d2f99da78142e4f82ad3d3214733752a7e887d86d015
+target: esp32s3
+version: 3.0.0

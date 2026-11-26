@@ -1,0 +1,43 @@
+# Bojaqu Smart Door-Lock — Production Preset Overlay (CMakePresets: "prod")
+# WARNING: Enables Secure Boot v2, Flash Encryption (Release mode), Anti-Rollback,
+# and disables ROM Download Mode. Flashing onto physical hardware permanently burns eFuses!
+# Reference: ADR-0005, ADR-0006, ADR-0007
+
+# Flash & Strict PSRAM Presence (ESP32-S3-WROOM-1-N16R8 required in prod)
+CONFIG_ESPTOOLPY_FLASHMODE_QIO=y
+# CONFIG_SPIRAM_IGNORE_NOTFOUND is not set
+
+# Compiler Optimization & Minimal Log Surface
+CONFIG_COMPILER_OPTIMIZATION_SIZE=y
+CONFIG_COMPILER_OPTIMIZATION_ASSERTIONS_SILENT=y
+CONFIG_LOG_DEFAULT_LEVEL_WARN=y
+CONFIG_BOOTLOADER_LOG_LEVEL_WARN=y
+
+# Watchdog & Crash Resilience (fail-safe reboot; GPIO21 pull-down keeps lock closed)
+CONFIG_ESP_TASK_WDT_PANIC=y
+CONFIG_ESP_SYSTEM_PANIC_SILENT_REBOOT=y
+
+# Secure Boot v2 (Provide signing key out-of-band via CI/HSM; NEVER commit .pem to Git)
+CONFIG_SECURE_BOOT=y
+CONFIG_SECURE_BOOT_V2_ENABLED=y
+CONFIG_SECURE_BOOT_V2_RSA_ENABLED=y
+CONFIG_SECURE_BOOT_BUILD_SIGNED_BINARIES=y
+
+# Flash Encryption (Release Mode) & Physical Interface Lockdown
+CONFIG_SECURE_FLASH_ENC_ENABLED=y
+CONFIG_SECURE_FLASH_ENCRYPTION_MODE_RELEASE=y
+CONFIG_SECURE_DISABLE_ROM_DL_MODE=y
+
+# Anti-Rollback (Increment SEC_VER only for security advisories)
+CONFIG_BOOTLOADER_APP_ANTI_ROLLBACK=y
+CONFIG_BOOTLOADER_APP_SEC_VER=1
+
+# Subsystem Security (active once nvs_flash / espcoredump / bt are linked in app build):
+# - NVS Encryption backed by encrypted nvs_keys partition in partitions.csv
+CONFIG_NVS_ENCRYPTION=y
+# - Persistent crash dumps in 64 KB coredump partition
+CONFIG_ESP_COREDUMP_ENABLE_TO_FLASH=y
+
+# Application-level Kconfig overrides (enforce once main/Kconfig.projbuild is added):
+# # CONFIG_BJQ_RFID_ALLOW_UID_FALLBACK is not set
+# CONFIG_BJQ_ENV_PRODUCTION=y

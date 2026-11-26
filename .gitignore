@@ -19,6 +19,7 @@
 # Build artifacts and directories
 **/build/
 build/
+build-outputs/
 *.o
 *.a
 *.out
@@ -30,7 +31,13 @@ build/
 *.map
 flasher_args.json # Generated in build directory
 sdkconfig.old
-sdkconfig
+/sdkconfig
+!configs/*/sdkconfig
+
+# Security keys (NEVER commit Secure Boot / Flash Encryption / device keys)
+*.pem
+*.key
+secure_boot_signing_key*
 
 # ESP-IDF dependencies
 # For older versions or manual component management

@@ -1,0 +1,17 @@
+# Bojaqu Smart Door-Lock — Custom 16 MB Flash Partition Table (ESP32-S3-WROOM-1-N16R8)
+# Requires CONFIG_PARTITION_TABLE_OFFSET=0x10000 (64 KB bootloader for Secure Boot v2 + Flash Encryption)
+# Total flash size: 16 MB (0x1000000)
+#
+# NOTE: Do NOT add the "encrypted" flag to "nvs" or "fctry"; NVS encryption uses AES-XTS keyed from "nvs_keys".
+#
+# Name,   Type, SubType,  Offset,   Size,     Flags
+otadata,  data, ota,      0x011000, 0x002000,
+phy_init, data, phy,      0x013000, 0x001000,
+nvs_keys, data, nvs_keys, 0x014000, 0x001000, encrypted
+nvs,      data, nvs,      0x015000, 0x020000,
+fctry,    data, nvs,      0x035000, 0x00B000,
+ota_0,    app,  ota_0,    0x040000, 0x500000,
+ota_1,    app,  ota_1,    0x540000, 0x500000,
+coredump, data, coredump, 0xA40000, 0x010000,
+assets,   data, spiffs,   0xA50000, 0x200000,
+storage,  data, spiffs,   0xC50000, 0x3B0000,
