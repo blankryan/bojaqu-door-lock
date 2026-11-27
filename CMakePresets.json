@@ -3,22 +3,22 @@
     "configurePresets": [
         {
             "name": "dev",
-            "binaryDir": "${sourceDir}/build-outputs/dev",
+            "binaryDir": "./build-outputs/dev",
             "displayName": "dev",
             "description": "Development configuration for bench testing and Wokwi simulation of bojaqu-door-lock",
             "cacheVariables": {
                 "SDKCONFIG_DEFAULTS": "sdkconfig.defaults;configs/dev/sdkconfig",
-                "SDKCONFIG": "${sourceDir}/build-outputs/dev/sdkconfig"
+                "SDKCONFIG": "./build-outputs/dev/sdkconfig"
             }
         },
         {
             "name": "prod",
-            "binaryDir": "${sourceDir}/build-outputs/prod",
+            "binaryDir": "./build-outputs/prod",
             "displayName": "prod",
             "description": "Production configuration for bojaqu-door-lock (Secure Boot v2, Flash/NVS Encryption, Anti-Rollback)",
             "cacheVariables": {
                 "SDKCONFIG_DEFAULTS": "sdkconfig.defaults;configs/prod/sdkconfig",
-                "SDKCONFIG": "${sourceDir}/build-outputs/prod/sdkconfig"
+                "SDKCONFIG": "./build-outputs/prod/sdkconfig"
             }
         }
     ],
