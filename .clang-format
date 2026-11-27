@@ -1,0 +1,55 @@
+---
+# Bojaqu Smart Door-Lock — ESP-IDF 4-Space K&R C Style
+# Compatible with clang-format >= 16 (including esp-clangd / LLVM 21+)
+Language: Cpp
+BasedOnStyle: LLVM
+
+# Indentation & Line Length
+IndentWidth: 4
+TabWidth: 4
+ContinuationIndentWidth: 4
+UseTab: Never
+ColumnLimit: 120
+IndentCaseLabels: false
+IndentExternBlock: NoIndent
+IndentPPDirectives: None
+
+# Braces (ESP-IDF K&R / Linux: function '{' on new line; control/struct/enum '{' on same line)
+BreakBeforeBraces: Linux
+InsertBraces: true
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+
+# Pointers & Spacing
+PointerAlignment: Right
+DerivePointerAlignment: false
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+Cpp11BracedListStyle: true
+
+# Alignment & Wrapping
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: None
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: None
+AlignOperands: Align
+AlignTrailingComments: true
+AlwaysBreakAfterReturnType: None
+BinPackArguments: true
+BinPackParameters: true
+BreakBeforeBinaryOperators: None
+BreakBeforeTernaryOperators: true
+
+# Includes, Comments & Vertical Spacing
+SortIncludes: Never
+ReflowComments: false
+MaxEmptyLinesToKeep: 1
+
+# Line Endings & EOF
+LineEnding: LF
+InsertNewlineAtEOF: true
+...
